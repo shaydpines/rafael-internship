@@ -178,7 +178,7 @@ const HotCollections = () => {
                   </div>
                 ))
               : hotCol.map((collection) => (
-                  <div key={collection.id}>
+                  <div className="px-1" key={collection.id}>
                     <div className="nft_coll">
                       <div className="nft_wrap">
                         <Link to={`/item-details/${collection.nftId}`}>
