@@ -5,61 +5,10 @@ import Landing from "../components/home/Landing";
 import LandingIntro from "../components/home/LandingIntro";
 import NewItems from "../components/home/NewItems";
 import TopSellers from "../components/home/TopSellers";
+import { NextArrow, PrevArrow } from "../components/UI/SliderArrows";
 
 const Home = () => {
-  function NextArrow({ onClick }) {
-    return (
-      <div
-        onClick={onClick}
-        className="custom-arrow next"
-        style={{
-          position: "absolute",
-          top: "50%",
-          right: "0",
-          transform: "translateY(-50%)",
-          zIndex: 2,
-          width: 40,
-          height: 40,
-          background: "#fff",
-          borderRadius: "50%",
-          boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          cursor: "pointer",
-        }}
-      >
-        <i className="fa fa-chevron-right" style={{ fontSize: 16 }} />
-      </div>
-    );
-  }
-
-  function PrevArrow({ onClick }) {
-    return (
-      <div
-        onClick={onClick}
-        className="custom-arrow prev"
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: "0",
-          transform: "translateY(-50%)",
-          zIndex: 2,
-          width: 40,
-          height: 40,
-          background: "#fff",
-          borderRadius: "50%",
-          boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          cursor: "pointer",
-        }}
-      >
-        <i className="fa fa-chevron-left" style={{ fontSize: 16 }} />
-      </div>
-    );
-  }
+  
 
   const sliderSettings = {
     dots: false,

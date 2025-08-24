@@ -13339,9 +13339,11 @@ a.read_more i {
   padding: 4px;
 }
 
-.author_list_pp i {
+.author_list_pp .author_checkmark {
   color: #ffffff;
-  font-size: 10px;
+  background-color: #8364E2;
+  font-size: 16px;
+  font-weight: bold;
   padding: 3px;
   position: absolute;
   right: 0;
