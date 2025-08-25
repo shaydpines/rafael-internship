@@ -1,11 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
-import NewItem from "./new-items/NewItem";
-import NewItemSkeleton from "./new-items/NewItemSkeleton";
+import NFTItem from "../UI/NFTItem";
+import NFTSkeleton from "../UI/NFTSkeleton";
 
 const NewItems = ({ sliderSettings }) => {
   const [newItems, setNewItems] = useState([]);
@@ -35,9 +34,17 @@ const NewItems = ({ sliderSettings }) => {
             </div>
           </div>
           <Slider {...sliderSettings}>
-            {loading ? (new Array(2).fill(0).map((_, index) => <NewItemSkeleton key={index} />)) : (
-              newItems.map((item, index) => <NewItem item={item} key={index} />)
-            )}
+            {loading
+              ? new Array(2).fill(0).map((_, index) => (
+                  <div key={index} className="px-1">
+                    <NFTSkeleton />
+                  </div>
+                ))
+              : newItems.map((item, index) => (
+                  <div key={index} className="px-1">
+                    <NFTItem item={item} />
+                  </div>
+                ))}
           </Slider>
         </div>
       </div>

@@ -1,10 +1,9 @@
 import React from 'react'
-import Skeleton from '../../UI/Skeleton'
+import Skeleton from './Skeleton'
 
-export default function NewItemSkeleton() {
+export default function NFTSkeleton() {
   return (
-    <div className="px-1">
-      <div className="nft__item">
+    <div className="nft__item">
         <div className="author_list_pp">
           <Skeleton width="50px" height="50px" borderRadius="50%" />
         </div>
@@ -20,6 +19,5 @@ export default function NewItemSkeleton() {
           <Skeleton width="30px" height="18px" borderRadius="4px" />
         </div>
       </div>
-    </div>
   )
 }
