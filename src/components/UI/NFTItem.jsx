@@ -1,39 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React from 'react'
+import { FaCheck } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
+import Countdown from './Countdown'
 
-
-export default function NewItem({ item }) {
-  const [countdown, setCountdown] = useState()
-
-  const calcCountdown = (expiration) => {
-    const remainingTime = expiration - Date.now()
-    setCountdown(remainingTime > 0 ? remainingTime : 0);
-  }
-
-  useEffect(() => {
-    if (!item.expiryDate) return;
-    calcCountdown(item.expiryDate)
-    const intervalId = setInterval(() => {
-        calcCountdown(item.expiryDate)
-      }, 1000);
-
-      return () => clearInterval(intervalId)
-  }, [])
-
-  const formatCountdown = (ms) => {
-    if (ms === null) return "";
-
-    const totalSeconds = Math.floor(ms / 1000);
-    const hours = Math.floor(totalSeconds / 3600);
-    const minutes = Math.floor((totalSeconds % 3600) / 60);
-    const seconds = totalSeconds % 60;
-    
-    return `${hours}h ${minutes}m ${seconds}s`;
-    };
-
+export default function NFTItem({item}) {
   return (
-    <div className="px-1">
-      <div className="nft__item">
+   <div className="nft__item">
         <div className="author_list_pp">
           <Link
             to={`/author/${item.authorId}`}
@@ -42,10 +14,10 @@ export default function NewItem({ item }) {
             title={`Creator: ${item.authorName}`}
           >
             <img className="lazy" src={item.authorImage} alt="" />
-            <i className="fa fa-check"></i>
+            <FaCheck className="author_checkmark"/>
           </Link>
         </div>
-        {item.expiryDate? <div className="de_countdown">{formatCountdown(countdown)}</div> : <></>}
+        {item.expiryDate? <Countdown expiration={item.expiryDate} /> : <></>}
         <div className="nft__item_wrap">
           <div className="nft__item_extra">
             <div className="nft__item_buttons">
@@ -84,6 +56,5 @@ export default function NewItem({ item }) {
           </div>
         </div>
       </div>
-    </div>
-  );
+  )
 }
