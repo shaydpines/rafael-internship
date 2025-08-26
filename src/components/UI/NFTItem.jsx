@@ -3,7 +3,7 @@ import { FaCheck } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import Countdown from './Countdown'
 
-export default function NFTItem({item}) {
+export default function NFTItem({item, author}) {
   return (
    <div className="nft__item">
         <div className="author_list_pp">
@@ -11,9 +11,9 @@ export default function NFTItem({item}) {
             to={`/author/${item.authorId}`}
             data-bs-toggle="tooltip"
             data-bs-placement="top"
-            title={`Creator: ${item.authorName}`}
+            title={`Creator: ${author && author.authorName}`}
           >
-            <img className="lazy" src={item.authorImage} alt="" />
+            <img className="lazy" src={author? author.authorImage : item.authorImage} alt="" />
             <FaCheck className="author_checkmark"/>
           </Link>
         </div>
