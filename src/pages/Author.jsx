@@ -46,7 +46,6 @@ const Author = () => {
                   <div className="de-flex-col">
                     <div className="profile_avatar">
                       <img src={author.authorImage} alt="" />
-
                       <i className="fa fa-check"></i>
                       <div className="profile_name">
                         <h4>
