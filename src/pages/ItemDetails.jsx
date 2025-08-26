@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import EthImage from "../images/ethereum.svg";
-import nftImage from "../images/nftImage.jpg";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { FaCheck } from "react-icons/fa";
