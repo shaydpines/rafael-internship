@@ -4,6 +4,7 @@ import nftImage from "../images/nftImage.jpg";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { FaCheck } from "react-icons/fa";
+import ItemDetailsSkeleton from "../components/itemdetails/ItemDetailsSkeleton";
 
 const ItemDetails = () => {
   let params = useParams();
@@ -27,7 +28,7 @@ const ItemDetails = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  return (
+  return (loading? <ItemDetailsSkeleton /> :
     <div id="wrapper">
       <div className="no-bottom no-top" id="content">
         <div id="top"></div>
