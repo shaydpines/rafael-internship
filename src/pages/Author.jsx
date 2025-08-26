@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import AuthorBanner from "../images/author_banner.jpg";
 import AuthorItems from "../components/author/AuthorItems";
 import { Link, useParams } from "react-router-dom";
-import AuthorImage from "../images/author_thumbnail.jpg";
 import axios from "axios";
 
 const Author = () => {
@@ -24,7 +22,6 @@ const Author = () => {
   useEffect(() => {
     setLoading(true);
     getData();
-    console.log(collection);
   }, []);
 
   return (
@@ -46,7 +43,6 @@ const Author = () => {
                   <div className="de-flex-col">
                     <div className="profile_avatar">
                       <img src={author.authorImage} alt="" />
-
                       <i className="fa fa-check"></i>
                       <div className="profile_name">
                         <h4>
