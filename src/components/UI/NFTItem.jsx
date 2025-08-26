@@ -2,17 +2,18 @@ import React, { useEffect, useState } from "react";
 import { FaCheck } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
 import Countdown from "./Countdown";
+import axios from "axios";
 
-export default function NFTItem({ item, author }) {
+export default function NFTItem({ item }) {
   let params = useParams();
-  const [item, setItem] = useState([]);
+  const [fullItem, setFullItem] = useState([]);
   const [loading, setLoading] = useState(false);
 
   async function getData() {
     const { data } = await axios.get(
-      `https://us-central1-nft-cloud-functions.cloudfunctions.net/itemDetails?nftId=${params.nftId}`
+      `https://us-central1-nft-cloud-functions.cloudfunctions.net/itemDetails?nftId=${item.nftId}`
     );
-    setItem(data);
+    setFullItem(data);
     setLoading(false);
   }
 
@@ -28,11 +29,11 @@ export default function NFTItem({ item, author }) {
           to={`/author/${item.authorId}`}
           data-bs-toggle="tooltip"
           data-bs-placement="top"
-          title={`Creator: ${author && author.authorName}`}
+          title={`Creator: ${fullItem.ownerName}`}
         >
           <img
             className="lazy"
-            src={author ? author.authorImage : item.authorImage}
+            src={fullItem.ownerImage}
             alt=""
           />
           <FaCheck className="author_checkmark" />
