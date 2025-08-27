@@ -7,14 +7,19 @@ export default function TopSeller({ topSeller }) {
     <li>
       <div className="author_list_pp">
         <Link to={`/author/${topSeller.authorId}`}>
-          <img className="lazy pp-author" src={topSeller.authorImage} alt="" />
+          <img
+            data-aos="flip-up"
+            data-aos-duration="200"
+            data-aos-easing="ease-in-out"
+            className="lazy pp-author"
+            src={topSeller.authorImage}
+            alt=""
+          />
           <FaCheck className="author_checkmark" />
         </Link>
       </div>
       <div className="author_list_info">
-        <Link to={`/author/${topSeller.authorId}`}>
-          {topSeller.authorName}
-        </Link>
+        <Link to={`/author/${topSeller.authorId}`}>{topSeller.authorName}</Link>
         <span>{topSeller.price} ETH</span>
       </div>
     </li>

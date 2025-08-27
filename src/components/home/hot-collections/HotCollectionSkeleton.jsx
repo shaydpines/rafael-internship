@@ -2,7 +2,7 @@ import React from "react";
 import Skeleton from "../../UI/Skeleton";
 
 
-const CollectionSkeleton = () => {
+const HotCollectionSkeleton = () => {
   return (
     <div className="nft_coll">
       <div className="nft_wrap">
@@ -19,4 +19,4 @@ const CollectionSkeleton = () => {
   );
 };
 
-export default CollectionSkeleton;
+export default HotCollectionSkeleton;
