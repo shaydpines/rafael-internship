@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import AuthorItems from "../components/author/AuthorItems";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import Skeleton from "../components/UI/Skeleton";
 
 const Author = () => {
   let params = useParams();
@@ -34,7 +35,11 @@ const Author = () => {
           className="text-light"
           data-bgimage={`url(${collection[0]?.nftImage}) top`}
           style={{ background: `url(${collection[0]?.nftImage}) top` }}
-        ></section>
+        >
+          {loading && (
+            <Skeleton width="100%" height="250px" borderRadius="0px" />
+          )}
+        </section>
         <section aria-label="section">
           <div className="container">
             <div className="row">
@@ -42,21 +47,55 @@ const Author = () => {
                 <div className="d_profile de-flex">
                   <div className="de-flex-col">
                     <div className="profile_avatar">
-                      <img src={author.authorImage} alt="" />
+                      {loading ? (
+                        <Skeleton
+                          width="100px"
+                          height="100px"
+                          borderRadius="50%"
+                          style={{ marginBottom: "12px" }}
+                        />
+                      ) : (
+                        <img src={author.authorImage} alt="" />
+                      )}
                       <i className="fa fa-check"></i>
                       <div className="profile_name">
-                        <h4>
-                          {author.authorName}
-                          <span className="profile_username">
-                            @{author.tag}
-                          </span>
-                          <span id="wallet" className="profile_wallet">
-                            {author.address}
-                          </span>
-                          <button id="btn_copy" title="Copy Text">
-                            Copy
-                          </button>
-                        </h4>
+                        {loading ? (
+                          <>
+                            <Skeleton
+                              width="180px"
+                              height="20px"
+                              borderRadius="4px"
+                              style={{ marginBottom: "8px" }}
+                            />
+                            <Skeleton
+                              width="120px"
+                              height="16px"
+                              borderRadius="4px"
+                              style={{ marginBottom: "6px" }}
+                            />
+                            <Skeleton
+                              width="200px"
+                              height="16px"
+                              borderRadius="4px"
+                              style={{ marginBottom: "10px" }}
+                            />
+                          </>
+                        ) : (
+                          <>
+                            <h4>
+                              {author.authorName}
+                              <span className="profile_username">
+                                @{author.tag}
+                              </span>
+                              <span id="wallet" className="profile_wallet">
+                                {author.address}
+                              </span>
+                              <button id="btn_copy" title="Copy Text">
+                                Copy
+                              </button>
+                            </h4>
+                          </>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -66,16 +105,38 @@ const Author = () => {
                         <div className="profile_follower">
                           {author.followers + 1} followers
                         </div>
-                        <Link to="#" className="btn-main" onClick={() => setFollowing(false)}>
+                        <Link
+                          to="#"
+                          className="btn-main"
+                          onClick={() => setFollowing(false)}
+                        >
                           Unfollow
                         </Link>
                       </div>
+                    ) : loading ? (
+                      <>
+                        <Skeleton
+                          width="100px"
+                          height="16px"
+                          borderRadius="4px"
+                          style={{ marginBottom: "10px" }}
+                        />
+                        <Skeleton
+                          width="80px"
+                          height="30px"
+                          borderRadius="6px"
+                        />
+                      </>
                     ) : (
                       <div className="de-flex-col">
                         <div className="profile_follower">
                           {author.followers} followers
                         </div>
-                        <Link to="#" className="btn-main" onClick={() => setFollowing(true)}>
+                        <Link
+                          to="#"
+                          className="btn-main"
+                          onClick={() => setFollowing(true)}
+                        >
                           Follow
                         </Link>
                       </div>
@@ -86,7 +147,11 @@ const Author = () => {
 
               <div className="col-md-12">
                 <div className="de_tab tab_simple">
-                  <AuthorItems author={author} collection={collection} loading={loading} />
+                  <AuthorItems
+                    author={author}
+                    collection={collection}
+                    loading={loading}
+                  />
                 </div>
               </div>
             </div>
