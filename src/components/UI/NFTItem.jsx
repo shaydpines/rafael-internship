@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 import Countdown from "./Countdown";
 
 export default function NFTItem({ item, author }) {
-
-
   return (
     <div className="nft__item">
       <div className="author_list_pp">
@@ -16,6 +14,9 @@ export default function NFTItem({ item, author }) {
           title={`Author: ${author && author.authorName}`}
         >
           <img
+            data-aos="flip-up"
+            data-aos-duration="200"
+            data-aos-easing="ease-in-out"
             className="lazy"
             src={author ? author.authorImage : item.authorImage}
             alt=""
@@ -44,15 +45,47 @@ export default function NFTItem({ item, author }) {
         </div>
 
         <Link to={`/item-details/${item.nftId}`}>
-          <img src={item.nftImage} className="lazy nft__item_preview" alt="" />
+          <img
+            src={item.nftImage}
+            data-aos="zoom-in"
+            data-aos-delay="200"
+            data-aos-duration="400"
+            data-aos-easing="ease-in-out"
+            className="lazy nft__item_preview"
+            alt=""
+          />
         </Link>
       </div>
       <div className="nft__item_info">
         <Link to={`/item-details/${item.nftId}`}>
-          <h4>{item.title}</h4>
+          <h4
+            data-aos="fade-left"
+            data-aos-delay="300"
+            data-aos-duration="200"
+            data-aos-easing="ease-in-out"
+            data-aos-offset="60"
+          >
+            {item.title}
+          </h4>
         </Link>
-        <div className="nft__item_price">{item.price} ETH</div>
-        <div className="nft__item_like">
+        <div
+          className="nft__item_price"
+          data-aos="fade-left"
+          data-aos-delay="300"
+          data-aos-duration="200"
+          data-aos-easing="ease-in-out"
+          data-aos-offset="60"
+        >
+          {item.price} ETH
+        </div>
+        <div
+          className="nft__item_like"
+          data-aos="fade-in"
+          data-aos-delay="300"
+          data-aos-duration="300"
+          data-aos-easing="ease-in-out"
+          data-aos-offset="60"
+        >
           <i className="fa fa-heart"></i>
           <span>{item.likes}</span>
         </div>

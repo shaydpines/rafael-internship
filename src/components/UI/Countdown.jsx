@@ -1,23 +1,22 @@
-
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react";
 
 export default function Countdown({ expiration }) {
-  const [countdown, setCountdown] = useState()
+  const [countdown, setCountdown] = useState();
 
   const calcCountdown = () => {
-    const remainingTime = expiration - Date.now()
+    const remainingTime = expiration - Date.now();
     setCountdown(remainingTime > 0 ? remainingTime : 0);
-  }
+  };
 
   useEffect(() => {
     if (!expiration) return;
-    calcCountdown(expiration)
+    calcCountdown(expiration);
     const intervalId = setInterval(() => {
-        calcCountdown(expiration)
-      }, 1000);
+      calcCountdown(expiration);
+    }, 1000);
 
-      return () => clearInterval(intervalId)
-  }, [])
+    return () => clearInterval(intervalId);
+  }, []);
 
   const formatCountdown = (ms) => {
     if (ms === null) return "";
@@ -26,11 +25,18 @@ export default function Countdown({ expiration }) {
     const hours = Math.floor(totalSeconds / 3600);
     const minutes = Math.floor((totalSeconds % 3600) / 60);
     const seconds = totalSeconds % 60;
-    
-    return `${hours}h ${minutes}m ${seconds}s`;
-    };
 
-    return (
-    <div className="de_countdown">{formatCountdown(countdown)}</div>
-  )
+    return `${hours}h ${minutes}m ${seconds}s`;
+  };
+
+  return (
+    <div
+      data-aos="fade-in"
+      data-aos-duration="600"
+      data-aos-easing="ease-in-out"
+      className="de_countdown"
+    >
+      {formatCountdown(countdown)}
+    </div>
+  );
 }
